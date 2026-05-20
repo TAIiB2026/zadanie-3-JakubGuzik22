@@ -12,6 +12,7 @@ import { ItemListCComponent } from './components/item-list-c/item-list-c.compone
 import { ItemBService } from './services/item-b.service';
 import { ItemCService } from './services/item-c.service';
 import { ITEM_SERVICE_TOKEN } from './tokens/item-service.token';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -26,9 +27,10 @@ import { ITEM_SERVICE_TOKEN } from './tokens/item-service.token';
     BrowserModule,
     AppRoutingModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
-  providers: [DatePipe, { provide: ITEM_SERVICE_TOKEN, useClass: ItemBService }],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
