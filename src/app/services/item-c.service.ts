@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { InfoService } from './info.service';
 import { Item } from '../models/item';
+import { ItemService } from '../models/item-service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ItemCService {
+export class ItemCService implements ItemService {
 private items: Item[] = [
     { id: 11, value: 1100, date: new Date('2022-11-01'), name: 'Item C1' },
     { id: 12, value: 1200, date: new Date('2022-12-01'), name: 'Item C2' },

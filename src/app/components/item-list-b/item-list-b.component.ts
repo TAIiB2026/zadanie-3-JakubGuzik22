@@ -12,7 +12,7 @@ import { ItemBService } from '../../services/item-b.service';
   templateUrl: './item-list-b.component.html',
     providers: [
     FormHideCounterService,
-    { provide: ITEM_SERVICE_TOKEN, useClass: ItemBService }
+    { provide: ITEM_SERVICE_TOKEN, useExisting: ItemBService }
   ]
 })
 export class ItemListBComponent implements OnInit {
