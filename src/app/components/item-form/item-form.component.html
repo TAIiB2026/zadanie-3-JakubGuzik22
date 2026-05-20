@@ -1,0 +1,47 @@
+<!-- <div>
+  <h3>Dodaj obiekt</h3>
+  <label>ID: <input type="number" [(ngModel)]="newItem.id" /></label><br/>
+  <label>Nazwa: <input type="text" [(ngModel)]="newItem.name" /></label><br/>
+  <label>Wartość: <input type="number" [(ngModel)]="newItem.value" /></label><br/>
+  <label>Data: <input type="date" [(ngModel)]="newItem.date" /></label><br/>
+  <button (click)="submit()">Zapisz</button>
+</div> -->
+
+<!-- OD ZADANIA 6 I DALEJ 
+walidatory:
+required — pole nie może być puste
+min="1" — ID musi być większe od 0
+minlength="3" — Nazwa musi mieć minimum 3 znaki
+min="0" — Wartość nie może być ujemna 
+max="9999" — Wartość nie może być większa niż 9999
+-->
+<div>
+  <h3>Dodaj obiekt</h3>
+  <form #itemForm="ngForm">
+    <label>ID:
+      <input type="number" name="id" [(ngModel)]="newItem.id"
+        required min="1" #idField="ngModel"/>
+      <span *ngIf="idField.invalid && idField.touched">ID musi być większe od 0</span>
+    </label><br/>
+
+    <label>Nazwa:
+      <input type="text" name="name" [(ngModel)]="newItem.name"
+        required minlength="3" #nameField="ngModel"/>
+      <span *ngIf="nameField.invalid && nameField.touched">Nazwa min. 3 znaki</span>
+    </label><br/>
+
+ <label>Wartość:
+  <input type="number" name="value" [(ngModel)]="newItem.value"
+    required min="0" max="9999" #valueField="ngModel"/>
+  <span *ngIf="valueField.invalid && valueField.touched">Wartość musi być między 0 a 9999</span>
+</label><br/>
+
+    <label>Data:
+      <input type="date" name="date" [(ngModel)]="newItem.date"
+        required #dateField="ngModel"/>
+      <span *ngIf="dateField.invalid && dateField.touched">Data jest wymagana</span>
+    </label><br/>
+
+    <button (click)="submit()" [disabled]="itemForm.invalid">Zapisz</button>
+  </form>
+</div>
